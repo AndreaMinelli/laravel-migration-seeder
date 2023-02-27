@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ env('APP_NAME') }}</title>
+    {{-- FontAwesome --}}
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css'
+        integrity='sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=='
+        crossorigin='anonymous' />
     @vite('resources/js/app.js')
 </head>
 
@@ -31,11 +35,11 @@
                         <tr>
                             <th scope="row">{{ $train->train_number }}</th>
                             <td>{{ $train->departure_station }}</td>
-                            <td>{{ $train->departure_time }}</td>
+                            <td>{{ $train->getTime($train->departure_time) }}</td>
                             <td>{{ $train->arrival_station }}</td>
-                            <td>{{ $train->arrival_time }}</td>
-                            <td>{{ $train->in_time }}</td>
-                            <td>{{ $train->deleted }}</td>
+                            <td>{{ $train->getTime($train->arrival_time) }}</td>
+                            <td>{!! $train->getBooleanIcon($train->in_time) !!}</td>
+                            <td>{!! $train->getBooleanIcon($train->deleted) !!}</td>
                         </tr>
                     @endforeach
                 </tbody>
