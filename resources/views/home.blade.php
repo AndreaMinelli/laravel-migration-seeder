@@ -16,7 +16,7 @@
 <body>
     @include('includes.header')
 
-    <main class="bg-dark py-4 min-vh-100">
+    <main class="bg-dark py-4">
         <div class="container">
             <table class="table text-white text-center">
                 <thead>
