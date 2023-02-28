@@ -14,10 +14,17 @@ class Train extends Model
         return date('H:i', strtotime($time));
     }
 
-    public function getBooleanIcon($boolean)
+    public function getStatus($deleted, $delay)
     {
-        $check = "<i class=\"fa-regular fa-circle-check\"></i>";
-        $uncheck = "<i class=\"fa-regular fa-circle-xmark\"></i>";
-        return $boolean === 1 ? $check : $uncheck;
+        $status = '';
+        if ($deleted === 1) {
+            $status = 'Cancellato';
+        } else if ($delay === 1) {
+            $status = 'In ritardo';
+        } else {
+            $status = 'In orario';
+        }
+
+        return $status;
     }
 }

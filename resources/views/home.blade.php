@@ -26,8 +26,7 @@
                         <th scope="col">Orario di Partenza</th>
                         <th scope="col">Stazione di Arrivo</th>
                         <th scope="col">Orario di Arrivo</th>
-                        <th scope="col">In Orario</th>
-                        <th scope="col">Cancellato</th>
+                        <th scope="col">Stato</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,8 +37,7 @@
                             <td>{{ $train->getTime($train->departure_time) }}</td>
                             <td>{{ $train->arrival_station }}</td>
                             <td>{{ $train->getTime($train->arrival_time) }}</td>
-                            <td>{!! $train->getBooleanIcon($train->in_time) !!}</td>
-                            <td>{!! $train->getBooleanIcon($train->deleted) !!}</td>
+                            <td>{{ $train->getStatus($train->deleted, $train->in_time) }}</td>
                         </tr>
                     @endforeach
                 </tbody>
